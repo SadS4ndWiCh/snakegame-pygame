@@ -5,6 +5,12 @@ Jogo da Cobrinha com Pygame
 <div align="center">
   <img src=".github/snakegame.png" />
 </div>
+<div align="center">
+  <img src=".github/snakegame_special_fruit.png" />
+</div>
+<div align="center">
+  <img src=".github/snakegame_large_snake.png" />
+</div>
 
 Uma simples versão do Jogo da Cobrinha feita com Python usando a biblioteca de jogo chamada [Pygame](https://www.pygame.org/news)
 
