@@ -21,3 +21,21 @@ Uma simples versão do Jogo da Cobrinha feita com Python usando a biblioteca de 
 ## ⚙ Funcionalidades diferentes
  - Cobrinha tem uma 'cor de arco-íris', que na verdade é mais perceptível quanto maior vai ficando
  - Tem 5% de chance de aparecer uma 'frutinha especial' que aumenta 4 no corpo da cobrinha
+
+## 🛠 Instalação
+ 1. Clone o repositório
+ ```
+ git clone https://github.com/SadS4ndWiCh/snakegame-pygame.git
+ ```
+ 2. Entre na pasta
+ ```
+ cd snakegame-pygame
+ ```
+ 3. Instale as dependências necessárias
+ ```
+ pip install -r requirements.txt
+ ```
+ 4. Por fim, inicialize o jogo
+ ```
+ python main.py
+ ```
