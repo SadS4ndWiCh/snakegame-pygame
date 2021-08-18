@@ -60,7 +60,7 @@ class Game():
     self.__elapsed_time = 0
 
     self.player.reset_snake()
-    self.fruit.new_position()
+    self.fruit.reset_fruit()
 
   def handle_inputs(self, event):
     """ Manipula os inputs do usuário """
