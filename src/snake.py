@@ -98,27 +98,33 @@ class Snake(Entity):
           self.move_direction = next_direction
 
     if(isBoost and len(self.body) > self.min_body_size):
-      print(len(self.body), self.min_body_size)
-
       self.velocity = Velocity.FAST
       self.max_body_size -= 0.5
 
     else: self.velocity = Velocity.DEFAULT
 
-    self.position.x += current_move[0] * self.size.x
-    self.position.y += current_move[1] * self.size.y
+    self.position.x += current_move[0]
+    self.position.y += current_move[1]
 
-    if(self.position.x < 0): self.position.x = WIDTH
-    elif(self.position.x > WIDTH): self.position.x = 0
+    width_tiles = WIDTH / TILE_SIZE
+    height_tiles = HEIGHT / TILE_SIZE
 
-    if(self.position.y < 0): self.position.y = HEIGHT
-    elif(self.position.y > HEIGHT): self.position.y = 0
+    if(self.position.x < 0): self.position.x = width_tiles
+    elif(self.position.x > width_tiles): self.position.x = 0
+
+    if(self.position.y < 0): self.position.y = height_tiles
+    elif(self.position.y > height_tiles): self.position.y = 0
 
   def draw(self, screen: pygame.Surface):
     """ Desenha a cobrinha na tela """
 
     for body_ind, body_part in enumerate(self.body):
-      body_rect = pygame.Rect(body_part.x, body_part.y, self.size.x, self.size.y)
+      body_rect = pygame.Rect(
+        body_part.x * TILE_SIZE,
+        body_part.y * TILE_SIZE,
+        self.size.x,
+        self.size.y
+      )
       color = Colors.color_by_hue(body_ind / len(self.body))
 
       pygame.draw.rect(screen, color, body_rect)

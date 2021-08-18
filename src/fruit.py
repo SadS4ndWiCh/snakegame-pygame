@@ -42,5 +42,10 @@ class Fruit(Entity):
   def draw(self, screen: pygame.Surface):
     """ Desenha a frutinha na tela """
 
-    fruit_rect = pygame.Rect(self.position.x, self.position.y, TILE_SIZE, TILE_SIZE)
+    fruit_rect = pygame.Rect(
+      self.position.x * TILE_SIZE,
+      self.position.y * TILE_SIZE,
+      TILE_SIZE,
+      TILE_SIZE
+    )
     pygame.draw.rect(screen, self.get_color(), fruit_rect)

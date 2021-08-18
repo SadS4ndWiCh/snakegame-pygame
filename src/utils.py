@@ -9,7 +9,7 @@ def random_grid_pos(use_padding: bool = False) -> Vector2:
     x_rand = random.randint(0, WIDTH / TILE_SIZE)
     y_rand = random.randint(0, HEIGHT / TILE_SIZE)
 
-    return Vector2(x_rand * TILE_SIZE, y_rand * TILE_SIZE)
+    return Vector2(x_rand, y_rand)
   else:
     tile_padding = TILE_SIZE * SPAWN_PADDING
 
@@ -22,4 +22,4 @@ def random_grid_pos(use_padding: bool = False) -> Vector2:
       (HEIGHT - tile_padding) / TILE_SIZE
     )
 
-    return Vector2(x_rand * TILE_SIZE, y_rand * TILE_SIZE)
+    return Vector2(x_rand, y_rand)
