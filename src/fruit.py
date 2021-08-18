@@ -13,7 +13,7 @@ class Fruit(Entity):
     self.position = pygame.Vector2()
     self.fruit_type = FruitTypes.DEFAULT
 
-    self.new_position()
+    self.reset_fruit()
 
   def get_points(self) -> int:
     """ Retorna a quantidade de pontos que o tipo da frutinha dá """
