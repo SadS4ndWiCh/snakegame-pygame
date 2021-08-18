@@ -25,7 +25,7 @@ class Fruit(Entity):
     
     return self.fruit_type['color']
 
-  def new_position(self):
+  def reset_fruit(self):
     """ Define uma nova posição aleatória para a frutinha """
 
     new_position = random_grid_pos(True)
