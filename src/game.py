@@ -1,10 +1,12 @@
 import pygame
 
 import time
+from pickledb import PickleDB
 from typing import Union
 
 from src.snake import Snake
 from src.fruit import Fruit
+from src.database import load_db
 from src.interfaces import GameStates, Controls, Colors
 
 from constants import WIDTH, HEIGHT
@@ -22,11 +24,14 @@ class Game():
     self.score = 0
     self.high_score = 0
 
+    self.db: PickleDB = None
+
     self.__previous_frame_time = 0
     self.__dt = 0
     self.__elapsed_time = 0
 
     self.__setup_pygame(title)
+    self.__setup_databse()
 
     self.font = pygame.font.SysFont('montserrat', 20)
 
@@ -45,12 +50,20 @@ class Game():
 
     pygame.init()
 
+  def __setup_databse(self):
+    self.db = load_db()
+
+    if(self.db.exists('high_score')):
+      self.high_score = self.db.get('high_score')
+
   def reset_game(self):
     """ Finaliza o jogo e reseta para as configurações iniciais """
 
     self.keys = [False, False, False, False, False]
 
     self.high_score = max(self.score, self.high_score)
+    self.db.set('high_score', self.high_score)
+
     self.score = 0
 
     self.__previous_frame_time = 0
