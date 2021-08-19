@@ -17,6 +17,7 @@ Uma simples versão do Jogo da Cobrinha feita com Python usando a biblioteca de 
 ## 🚀 Tecnologias
  - Python
  - Pygame
+ - PickleDB (Banco de Dados)
 
 ## ⚙ Funcionalidades diferentes
  - Cobrinha tem uma 'cor de arco-íris', que na verdade é mais perceptível quanto maior vai ficando
