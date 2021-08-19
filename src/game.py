@@ -20,13 +20,15 @@ class Game():
     self.fruit = Fruit()
 
     self.score = 0
-    self.max_score = 0
+    self.high_score = 0
 
     self.__previous_frame_time = 0
     self.__dt = 0
     self.__elapsed_time = 0
 
     self.__setup_pygame(title)
+
+    self.font = pygame.font.SysFont('montserrat', 20)
 
   def __calcule_deltatime(self):
     """ Calcula o Deltatime """
@@ -48,11 +50,7 @@ class Game():
 
     self.keys = [False, False, False, False, False]
 
-    self.max_score = max(self.score, self.max_score)
-
-    print(f'Pontuação final de {self.score} pontos!')
-    print(f'Seu record foi de {self.max_score}')
-    
+    self.high_score = max(self.score, self.high_score)
     self.score = 0
 
     self.__previous_frame_time = 0
@@ -61,6 +59,17 @@ class Game():
 
     self.player.reset_snake()
     self.fruit.reset_fruit()
+
+  def display_score(self):
+    """ Renderiza a pontuação atual e máxima na tela """
+
+    current_score_text = self.font.render(f'Score: {self.score}', True, Colors.WHITE)
+    high_score_text = self.font.render(f'High score: {self.high_score}', True, Colors.WHITE)
+
+    high_score_x = WIDTH - high_score_text.get_width() - 10
+
+    self.screen.blit(current_score_text, (10, 10))
+    self.screen.blit(high_score_text, (high_score_x, 10))
 
   def handle_inputs(self, event):
     """ Manipula os inputs do usuário """
@@ -106,7 +115,7 @@ class Game():
 
         if(self.player.has_collide(self.fruit)):
           self.player.increase_body(self.fruit.get_points())
-          self.fruit.new_position()
+          self.fruit.reset_fruit()
           self.score += 1
 
         self.__elapsed_time = 0
@@ -118,6 +127,8 @@ class Game():
 
     self.player.draw(self.screen)
     self.fruit.draw(self.screen)
+
+    self.display_score()
 
     pygame.display.update()
 
