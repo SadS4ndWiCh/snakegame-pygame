@@ -63,6 +63,7 @@ class Game():
 
     self.high_score = max(self.score, self.high_score)
     self.db.set('high_score', self.high_score)
+    print(self.db.get('high_score'))
 
     self.score = 0
 
@@ -101,12 +102,20 @@ class Game():
       elif event.key in Controls.RIGHT: self.keys[3] = False
       elif event.key == Controls.BOOST: self.keys[4] = False
 
+  def handle_quit(self):
+    """ Manipula o jogo ao clicar em sair """
+
+    self.game_state = 2
+
+    # Salvar nova pontuação máxima mesmo quando sair
+    self.db.set('high_score', max(self.score, self.high_score))
+
   def handle_events(self):
     """ Manipula os eventos do jogo """
 
     for event in pygame.event.get():
       if(event.type == pygame.QUIT):
-        self.game_state = 2
+        self.handle_quit()
 
       self.handle_inputs(event)
 
