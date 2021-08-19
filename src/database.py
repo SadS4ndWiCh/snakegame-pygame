@@ -7,6 +7,6 @@ def load_db() -> pickledb.PickleDB:
   """ Carrega o banco de dados """
 
   # Auto Dump -> True para salvar automaticamente no arquivo
-  db = pickledb.load('database.db', True)
+  db = pickledb.load('../database.db', True)
 
   return db
